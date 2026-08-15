@@ -1,0 +1,31 @@
+.upwards, .downwards {
+    display: flex;
+    justify-content: center;
+}
+
+.sideways {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.left, .right {
+    margin: 50px;
+    padding: 20px;
+    border: 0px solid;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: #dc042c;
+    background: #1e1e1e;
+    box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.up, .down {
+    padding: 20px;
+    border: 0px solid;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: #dc042c;
+    background: #1e1e1e;
+    box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.6);
+}
