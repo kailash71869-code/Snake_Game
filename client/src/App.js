@@ -45,7 +45,7 @@ class App extends Component {
 
   componentDidUpdate() {
     this.onSnakeOutofBounds();
-    this.onSnakeCollapsed();
+    this.onSnakeEatFood();
   }
 
   onKeyDown = (e) => {
@@ -111,7 +111,7 @@ class App extends Component {
     }
   }
 
-  onSnakeCollapsed() {
+  onSnakeEatFood() {
     let head = this.state.snakeDots[this.state.snakeDots.length-1];
     let food = this.state.food;
     if(head[0] === food[0] && head[1] === food[1]){
@@ -134,10 +134,27 @@ class App extends Component {
 
   increaseSpeed() {
     if(this.state.speed > 10){
-      this.setState({
-        speed: this.state.speed -5,
-      });
+      const newSpeed=this.state.speed-5;
+
+      clearInterval(this.interval);
+
+      this.setState(
+        {
+          speed: newSpeed
+        },
+        () => {
+          this.interval = setInterval(
+            this.moveSnake,
+            this.state.speed
+          );
+        }
+      );
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+    document.onkeydown = null;
   }
 
   onRouteChange = (route) => {
@@ -146,6 +163,7 @@ class App extends Component {
 
   gameOver() {
     const score = this.state.snakeDots.length-2;
+    alert(`Game over, your score is ${score}`);
 
     fetch('http://localhost:5000/api/scores', {
       method: "POST",
@@ -241,7 +259,7 @@ class App extends Component {
                   <Button
                       onDown={this.onDown}
                       onUp={this.onUp}
-                      onLeft={this.OnLeft}
+                      onLeft={this.onLeft}
                       onRight={this.onRight}
                   />
                </div>
@@ -249,7 +267,15 @@ class App extends Component {
 
            {
             route === 'leaderboard' && (
-              <Leaderboard />
+              <Leaderboard 
+                onPlayAgain={() =>this.setState({
+                  ...initialState,
+                  route: "game"
+                })}
+                onMainMenu={() => this.setState({
+                  ...initialState,
+                  route: "menu"
+                })}/>
             )
            }
           </div>

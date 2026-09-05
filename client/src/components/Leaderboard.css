@@ -1,0 +1,130 @@
+.leaderboard {
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1e1e2f;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.leaderboard h1 {
+    margin-bottom: 25px;
+    font-size: 36px;
+    color: #00ff99;
+}
+
+.score-table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.score-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    padding: 15px;
+    background: #00ff99;
+    color: #111;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.score-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    padding: 15px;
+    background: #292943;
+    border-bottom: 1px solid #444;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+.score-row:nth-child(even) {
+    background: #242438;
+}
+
+.score-row:hover {
+    background: #35355a;
+    transform: scale(1.01);
+}
+
+.score-row span:first-child {
+    font-weight: bold;
+    color: #00ff99;
+}
+
+.score-row span:nth-child(2) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.score-row span:last-child {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.leaderboard p {
+    font-size: 18px;
+    color: #ccc;
+    margin: 25px 0;
+}
+
+.leaderboard-button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.leaderboard-button button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #00ff99;
+    color: #111;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.leaderboard-button button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.3);
+}
+
+.leaderboard-button button:last-child {
+    background: #44445f;
+    color: white;
+}
+
+.leaderboard-button button:last-child:hover {
+    background: #555577;
+}
+
+@media (max-width: 600px) {
+    .leaderboard {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .score-header,
+    .score-row {
+        grid-template-columns: 60px 1fr 80px;
+        font-size: 14px;
+    }
+
+    .leaderboard h1 {
+        font-size: 28px;
+    }
+
+    .leaderboard-button {
+        flex-direction: column;
+    }
+
+    .leaderboard-button button {
+        width: 100%;
+    }
+}

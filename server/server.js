@@ -42,12 +42,12 @@ app.post("/api/scores", async(req,res) => {
             score
         });
 
-        const svaedScpre = await newScore.save();
+        const savedScore = await newScore.save();
 
         res.status(201).json(savedScore);
     }catch(error){
         res.status(500).json({
-            message: "Error svaing score"
+            message: "Error saving score"
         });
     }
 });
@@ -56,4 +56,4 @@ const PORT = 5000;
 
 app.listen(PORT, ()=> {
     console.log(`Server is running on http: //localhost ${PORT}`);
-});
+}); 
